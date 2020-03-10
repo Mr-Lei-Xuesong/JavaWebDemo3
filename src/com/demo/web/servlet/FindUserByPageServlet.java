@@ -17,6 +17,7 @@ import java.util.Map;
 public class FindUserByPageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        //获取登录用户名
         Object login = request.getSession().getAttribute("login");
         String currentPage = request.getParameter("currentPage");//当前页码
         String rows = request.getParameter("rows");//每页显示条数
@@ -38,6 +39,7 @@ public class FindUserByPageServlet extends HttpServlet {
         request.setAttribute("pb", pb);
         //将查询条件存入request
         request.setAttribute("condition", condition);
+        //将用户名存入request
         request.setAttribute("login", login);
         //转发
         request.getRequestDispatcher("/list.jsp").forward(request, response);
